@@ -3,12 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dashbourd</title>
+    <title>Incident Management Dashboard</title>
+    <link rel="stylesheet" href="/Bad-baado-project/dashbourd/dashbourd.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body>
-    <h1>welcome</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio cumque aperiam eos earum vero, rerum necessitatibus modi dicta cupiditate alias ipsa perferendis qui omnis praesentium suscipit similique minus veniam doloremque.
-        
-    </p>
+<body class="light-mode">
+     <div class="dashboard-container">
+        <div class="sidebar">
+            <div class="logo">
+                <i class="fas fa-exclamation-triangle"></i> Dashboard
+            </div>
+            <ul class="nav-links">
+                <li class="active"><a href="/Bad-baado-project/dashbourd/dashbourd.html"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="/Bad-baado-project/dashbourd/incdent.html"><i class="fas fa-clipboard-list"></i> Manage Incidents</a></li>
+                <li><a href="/Bad-baado-project/dashbourd/login.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <div class="top-nav">
+                <div class="menu-icon"><i class="fas fa-bars"></i></div>
+                <div class="search-bar">
+                    <!-- <h1 class="text-center">Welcome, User!</h1> -->
+                </div>
+                <div class="user-profile">
+                    <button id="themeToggleBtn" class="theme-toggle">
+                        <i class="fas fa-moon"></i> </button>
+                </div>
+            </div>
+
+            <div class="dashboard-cards">
+                <div class="card total-card">
+                    <h3>Total Incidents</h3>
+                    <p id="totalIncidents">0</p>
+                    <i class="fas fa-list-alt"></i>
+                </div>
+                <div class="card pending-card">
+                    <h3>Pending Incidents</h3>
+                    <p id="pendingIncidents">0</p>
+                    <i class="fas fa-hourglass-half"></i>
+                </div>
+                <div class="card resolved-card">
+                    <h3>Resolved Incidents</h3>
+                    <p id="resolvedIncidents">0</p>
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="card high-priority-card">
+                    <h3>High Priority</h3>
+                    <p id="highPriority">0</p>
+                    <i class="fas fa-exclamation-circle"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/Bad-baado-project/dashbourd/dashbourd.js"></script>
 </body>
 </html>
