@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Incidents</title>
+    <link rel="stylesheet" href="/Bad-baado-project/dashbourd/dashbourd.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="light-mode">
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <div class="logo">
+                <i class="fas fa-exclamation-triangle"></i>Dashboard
+            </div>
+            <ul class="nav-links">
+                <li><a href="/Bad-baado-project/dashbourd/dashbourd.html"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li class="active"><a href="/Bad-baado-project/dashbourd/incdent.html"><i class="fas fa-clipboard-list"></i> Manage Incidents</a></li>
+                <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <div class="top-nav">
+                <div class="menu-icon"><i class="fas fa-bars"></i></div>
+                <div class="search-bar">
+                    <h1 class="text-center">Manage Incidents</h1>
+                </div>
+                <div class="user-profile">
+                    <button id="themeToggleBtn" class="theme-toggle">
+                        <i class="fas fa-moon"></i> </button>
+                </div>
+            </div>
+            
+            <div class="data-section">
+                <div class="controls">
+                    <button id="addNewIncidentBtn" class="add-btn"><i class="fas fa-plus"></i> Add New Incident</button>
+                    <div class="filter-group">
+                        <select id="filterCategory" class="filter-input">
+                            <option value="">All Categories</option>
+                            <option value="Fire">Fire</option>
+                            <option value="Accident">Accident</option>
+                            <option value="Theft">Theft</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <select id="filterPriority" class="filter-input">
+                            <option value="">All Priorities</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                        <select id="filterStatus" class="filter-input">
+                            <option value="">All Statuses</option>
+                            <option value="Pending">Pending</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Resolved">Resolved</option>
+                        </select>
+                        <input type="date" id="filterDate" class="filter-input">
+                    </div>
+                    <input type="text" id="searchInput" placeholder="Search by name or description...">
+                    <button id="exportCsvBtn" class="export-btn">Export CSV</button>
+                    <button id="exportPdfBtn" class="export-btn">Export PDF</button>
+                </div>
+
+                <div id="incidentFormContainer" class="form-container">
+                    <h3>Add/Edit Incident</h3>
+                    <form id="incidentForm">
+                        <input type="hidden" id="incidentId">
+                        <div class="form-group">
+                            <label for="incidentName">Incident Name:</label>
+                            <input type="text" id="incidentName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="incidentDescription">Description:</label>
+                            <textarea id="incidentDescription" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="incidentImage">Image:</label>
+                            <input type="file" id="incidentImage" accept="image/*">
+                            <img id="imagePreview" src="" alt="Image Preview" style="max-width: 100px; max-height: 100px; margin-top: 10px; display: none;">
+                        </div>
+                        <div class="form-group">
+                            <label for="incidentLocation">Location:</label>
+                            <input type="text" id="incidentLocation" placeholder="Address or GPS coordinates" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="incidentCategory">Category:</label>
+                            <select id="incidentCategory" required>
+                                <option value="Fire">Fire</option>
+                                <option value="Accident">Accident</option>
+                                <option value="Theft">Theft</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="incidentPriority">Priority:</label>
+                            <select id="incidentPriority" required>
+                                <option value="Low">Low</option>
+                                <option value="Medium">Medium</option>
+                                <option value="High">High</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="incidentStatus">Status:</label>
+                            <select id="incidentStatus" required>
+                                <option value="Pending">Pending</option>
+                                <option value="In Progress">In Progress</option>
+                                <option value="Resolved">Resolved</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="save-btn">Save Incident</button>
+                        <button type="button" class="cancel-btn" id="cancelFormBtn">Cancel</button>
+                    </form>
+                </div>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="incidentsTableBody">
+                    </tbody>
+                </table>
+            </div>
+            <div id="notification-popup" class="notification-popup">
+                <p id="notification-message"></p>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script src="/Bad-baado-project/dashbourd/dashbourd.js"></script>
+</body>
+</html>
